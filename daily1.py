@@ -2,7 +2,7 @@
 #-----------------------------
 #Data Structures
 #List - ordered collection of items, mutable(changeable) : [square ]
-list1 = [1,2,3,4,5,'a','Dhiraj',"Upadhyaya",True]  #list type of object with data
+list1 = [1,2,3,4,5,'a','karuna',"sagar",True]  #list type of object with data
 list1  #print when through spyder
 type(list1)  #type of object
 print(list1)  #print when running complete file
@@ -27,8 +27,8 @@ tuple1 = (1, 2, 'a', 'b')
 tuple1
 type(tuple1)
 tuple1[1]
-tuple1[1] = 0  #changes not possible, immutable
-tuple1 = (5,45)
+tuple1[3] = 'd' #changes not possible, immutable
+tuple1 = (8,45)
 tuple1  #overwriting is possible
 #%%
 #Dictionary - key-value pairs : { curly bracket and colon key:value}
@@ -39,14 +39,21 @@ type(dict1)
 car = { 'brand':'Honda', 'model': 'Jazz', 'year' : 2017}
 type(car)
 car
+bike = {'brand':'honda','model':'shine','year':2012}
+type(bike)
+bike
 #access
 car['brand']
 car['year']
 car.get('year')
 dir(car)
+bike['model']
+bike.get('model')
 #dir?  # help
 dir   #select the text and press control + I
 car['brand'] = 'MARUTI'
+bike['model']='apache'
+bike
 car  #mutable , value can be changed
 
 #%%frozen Dictionaries
@@ -84,6 +91,7 @@ type(tupleFZ1)
 # converting tuple to frozenset 
 frozenset1 = frozenset(tupleFZ1) 
 frozenset1  #only one 9
+
 type(frozenset1)
 
 dict1 = {1: 'Ramesh', 2: 'Suresh', 3: 'Priyanka'}
@@ -116,11 +124,11 @@ for i in list1:
 
   
 for i in list1:    print(i , end ='\t')
-print?  #help
+help(print)  #help
 for i in list2:    print(i, 'DU' , sep='-' , end ='xxx')
 #a-DU-xxx ; i+sep+end
 for i in list1:    print(i , 'HHHE', sep=' X ' , end ='\t')
-print?
+help(print)
 for i in list1:    print('Dhiraj ', i + 6)
 
 tuple1 = (1, 2, 'a', 'b')
@@ -159,7 +167,7 @@ list1
 import numpy
 numpy.array([10,20])
 numpy.array([list1])
-
+help(numpy.array)
 import numpy as np #np is alias
 np1 = np.arange(1,10)
 np1
@@ -194,10 +202,12 @@ np3.reshape((-1,1))  #1 column from 2 column
 #https://pandas.pydata.org/pandas-docs/stable/
 
 import pandas as pd
+import numpy
+import numpy as np
 pd?
 dir(pd)
 
-df1 = pd.DataFrame({'rollno':[1,2,3,4], 'name': [ "Dhiraj", "Kounal", "Akhil", "Pooja" ], 'marks':[ 40, 50, 60.5, 70 ], 'gender':['M', 'M','M', 'F']})
+df1 = pd.DataFrame({'rollno':[1,2,3,4], 'name': [ "Dhiraj", "Kounal", "Akhil", "Pooja" ], 'marks':[ 40, 50, 60.5, 70 ], 'gender':['M', 'M','M', 'F'],'course':['B.tech','M.tech','M.B.A','P.hd']})
 df1
 type(df1) 
 
@@ -208,6 +218,7 @@ df1.dtypes #data types
 df1.shape  # rows and columns
 df1.groupby('gender').size()
 df1.groupby('gender')['marks'].mean()
+
 df1.groupby('gender').aggregate({'marks': [np.mean, 'max','min','std','count']})
 
 #%% #Graphs https://python-graph-gallery.com/
