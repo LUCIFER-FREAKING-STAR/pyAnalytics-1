@@ -73,8 +73,10 @@ set2 = {'INDIA','PAKISTAN',  "INDIA"}  #better way
 set2
 set3 = {'Australia', 'South Africa', 'INDIA'}
 set3
+set4 ={'United kingdom','South Africa'}
 sorted(set3)
-set2.union(set3) #set2 | set3
+X= set2.union(set3) #set2 | set3
+X.union(set4)
 #A.intersection(B)
 set2.intersection(set3) #set2 & set
 
@@ -207,7 +209,7 @@ import numpy as np
 pd?
 dir(pd)
 
-df1 = pd.DataFrame({'rollno':[1,2,3,4], 'name': [ "Dhiraj", "Kounal", "Akhil", "Pooja" ], 'marks':[ 40, 50, 60.5, 70 ], 'gender':['M', 'M','M', 'F'],'course':['B.tech','M.tech','M.B.A','P.hd']})
+df1 = pd.DataFrame({'rollno':[1,2,3,4], 'name': [ "Dhiraj", "Kounal", "Akhil", "Pooja" ], 'marks':[ 40, 50, 60.5, 70 ], 'gender':['M', 'M','M', 'F'],'course':['B.tech','M.tech','M.B.A','P.hd'],'seq':np.arange(start=10,stop=14,step=1)})
 df1
 type(df1) 
 
@@ -218,7 +220,9 @@ df1.dtypes #data types
 df1.shape  # rows and columns
 df1.groupby('gender').size()
 df1.groupby('gender')['marks'].mean()
-
+df1.groupby('gender')['marks'].max()
+df1.groupby('gender').aggregate({'marks':np.mean})
+df1.groupby('gender').aggregate({'marks':[np.mean,'max','min','count'],'seq':[np.mean,'max','min']})
 df1.groupby('gender').aggregate({'marks': [np.mean, 'max','min','std','count']})
 
 #%% #Graphs https://python-graph-gallery.com/
@@ -277,7 +281,7 @@ data2a
 data2a = pd.read_csv('mtcars.csv') #when csv is in project folder
 data2a
 data2b
-data2b = pd.read_csv('E:/analytics/projects/pyanalytics/mtcars.csv')
+data2b = pd.read_csv('C:/analytics/projects/pyanalytics/mtcars.csv')
 data2b
 #csv in any other location - full path
 data2b
